@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BodyWhiteText, LargeWhiteText } from "../typography";
+import { LargeWhiteText } from "../typography";
 
 interface fieldsProps {
   children: any;

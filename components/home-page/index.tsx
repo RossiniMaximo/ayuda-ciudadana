@@ -7,7 +7,6 @@ import {
   LinkedinIcon,
   TwitterIcon,
 } from "../../ui/icons/social-links";
-import { BodyWhiteText, TitleWhiteText } from "../../ui/typography";
 import {
   BodyWhiteAnimText,
   TitleWhiteAnimText,

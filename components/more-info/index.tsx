@@ -5,6 +5,8 @@ import {
   SubtitleWhiteAnimText,
 } from "../../ui/typography/animation";
 import {
+  ContainerVideoText,
+  ContainerNextPage,
   ContainerImages,
   Container,
   ContainerAllTexts,
@@ -52,28 +54,15 @@ export function MoreInfo() {
             <ShapeImage url={i} />
           ))}
         </ContainerImages>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            textAlign: "center",
-            marginTop: 100,
-            gap: 50,
-          }}
-        >
-          <div
-            style={{
-              width: "90%",
-            }}
-          >
+        <ContainerNextPage>
+          <ContainerVideoText>
             <BodyWhiteAnimText>
               A continuación podrá visualizar el funcionamiento, además de una
               breve explicación de cómo funciona nuestro sistema de reportes.
             </BodyWhiteAnimText>
-          </div>
+          </ContainerVideoText>
           <FormButton>Ver vídeo</FormButton>
-        </div>
+        </ContainerNextPage>
       </div>
     </Container>
   );

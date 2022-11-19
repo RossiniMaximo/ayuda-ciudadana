@@ -5,12 +5,6 @@ interface transitionProps {
   children: any;
 }
 
-const variants = {
-  type: "spring",
-  damping: 20,
-  stiffness: 100,
-};
-
 export function Transition({ children }: transitionProps) {
   const { asPath } = useRouter();
 
@@ -21,7 +15,7 @@ export function Transition({ children }: transitionProps) {
           key={asPath}
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          exit={{ x: 0, opacity: 0, transition: { duration: 0.5 } }}
+          exit={{ x: 0, opacity: 0, transition: { duration: 0.3 } }}
           transition={{ type: "spring", damping: 20, stiffness: 100 }}
         >
           {children}

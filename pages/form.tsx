@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Form } from "../components/form";
-import { Layout } from "../components/layout";
 
 const Container = styled.div`
   overflow: auto;
@@ -25,9 +24,7 @@ const Container = styled.div`
 export default function FormPage() {
   return (
     <Container>
-      <Layout>
-        <Form />
-      </Layout>
+      <Form />
     </Container>
   );
 }

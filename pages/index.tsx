@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { HomePage } from "../components/home-page";
-import { Layout } from "../components/layout";
 
 export default function Home() {
   const Container = styled.div`
@@ -14,9 +13,7 @@ export default function Home() {
 
   return (
     <Container>
-      <Layout>
-        <HomePage />
-      </Layout>
+      <HomePage />
     </Container>
   );
 }

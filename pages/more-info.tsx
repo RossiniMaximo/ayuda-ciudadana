@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Layout } from "../components/layout";
 import { MoreInfo } from "../components/more-info";
 
 const Container = styled.div`
@@ -25,9 +24,7 @@ const Container = styled.div`
 export default function MoreInfoPage() {
   return (
     <Container>
-      <Layout>
-        <MoreInfo />
-      </Layout>
+      <MoreInfo />
     </Container>
   );
 }
