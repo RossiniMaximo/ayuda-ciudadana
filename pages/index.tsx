@@ -1,19 +1,36 @@
-import styled from "styled-components";
+import { SectionTwo } from "../components/sectionTwo";
+import { VideoSection } from "../components/videoSection";
+import { SectionThree } from "../components/sectionThree";
+import { Layout } from "../components/layout";
+import styles from "./home.module.css";
 import { HomePage } from "../components/home-page";
+import { Form } from "../components/form";
+import { MoreInfo } from "../components/more-info";
 
 export default function Home() {
-  const Container = styled.div`
-    overflow: auto;
-    height: 100vh;
-    background: url("https://res.cloudinary.com/dmycj7gmx/image/upload/v1668456564/ayuda-ciudadana/blackground_jq9ge5.png");
-    background-size: cover;
-    background-blend-mode: soft-light;
-    background-color: #000000ab;
-  `;
-
   return (
-    <Container>
-      <HomePage />
-    </Container>
+    <Layout
+      links={{
+        firstLink: "home",
+        secondLink: "video",
+        thirdLink: "form",
+        fourthLink: "about_us",
+      }}
+    >
+      <div>
+        <section className={styles.top_section} id="home">
+          <HomePage />
+        </section>
+        <section id="about_us" className={styles.about_us_section}>
+          <MoreInfo />
+        </section>
+        <section id="video" className={styles.video_section}>
+          <VideoSection />
+        </section>
+        <section className={styles.contact_section} id="form">
+          <Form />
+        </section>
+      </div>
+    </Layout>
   );
 }

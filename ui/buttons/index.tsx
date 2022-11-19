@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 interface buttonProps {
   children: any;
+  event?: any;
 }
 
 const CallToAction = styled.button`
@@ -54,6 +55,6 @@ export function RegisterButton({ children }: buttonProps) {
   return <Register>{children}</Register>;
 }
 
-export function FormButton({ children }: buttonProps) {
-  return <Form>{children}</Form>;
+export function FormButton({ children, event }: buttonProps) {
+  return <Form onClick={event}>{children}</Form>;
 }
