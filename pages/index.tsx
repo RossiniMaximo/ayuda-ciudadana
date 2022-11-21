@@ -12,7 +12,7 @@ export default function Home() {
     <Layout
       links={{
         firstLink: "home",
-        secondLink: "video",
+        secondLink: "about_us",
         thirdLink: "form",
         fourthLink: "about_us",
       }}

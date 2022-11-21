@@ -15,9 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
           rel="stylesheet"
         />
       </Head>
-      <Transition>
-        <Component {...pageProps} />;
-      </Transition>
+      <Component {...pageProps} />;
     </div>
   );
 }

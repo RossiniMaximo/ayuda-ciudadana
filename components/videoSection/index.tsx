@@ -2,10 +2,14 @@ import styles from "./videosection.module.css";
 import Img from "../../public/video_section_img.png";
 import Image from "next/image";
 import { default as _ReactPlayer } from "react-player/lazy";
+import { FormButton } from "../../ui/buttons";
 import { ReactPlayerProps } from "react-player/types/lib";
 const ReactPlayer = _ReactPlayer as unknown as React.FC<ReactPlayerProps>;
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+
 export function VideoSection() {
+  const router = useRouter();
   const [isWindow, setIsWindow] = useState(false);
 
   useEffect(() => {
@@ -48,6 +52,9 @@ export function VideoSection() {
         <div className={styles.image_container}>
           <Image src={Img} alt="" height={200} width={350} />
         </div>
+      </div>
+      <div className={styles.btn_container}>
+        <FormButton event={() => router.push("#form")}>Suscribete</FormButton>
       </div>
     </div>
   );

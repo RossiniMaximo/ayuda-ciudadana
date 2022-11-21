@@ -6,7 +6,7 @@ interface textProps {
 
 const BodyWhite = styled.p`
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   margin: 0;
   @media (max-width: 600px) {
     font-size: 15px;
@@ -80,7 +80,7 @@ const TitleWhite = styled.h1`
 
 const SubtitleWhite = styled.h3`
   font-weight: 800;
-  font-size: 40px;
+  font-size: 32px;
   text-align: center;
   margin: 0;
   @media (max-width: 600px) {
@@ -124,6 +124,6 @@ export function SubtitleWhiteAnimText({ children }: textProps) {
   return <SubtitleWhite>{children}</SubtitleWhite>;
 }
 
-export function BodyWhiteAnimText({ children }: textProps) {
+export function BodyWhiteAnimText({ children }: any) {
   return <BodyWhite>{children}</BodyWhite>;
 }

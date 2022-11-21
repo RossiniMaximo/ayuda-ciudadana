@@ -42,7 +42,7 @@ export function HomePage() {
             <TitleWhiteAnimText>AYUDA CIUDADANA</TitleWhiteAnimText>
             <InfoContainer>
               <BodyWhiteAnimText>
-                Calles en mal estado, &quotAyuda ciudadana&quot se dirije a los
+                Calles en mal estado, <q>Ayuda ciudadana </q> se dirije a los
                 ciudadanos argentinos afectados por esta problematica, reune
                 tanto personas con automoviles que no pueden transitar sin el
                 miedo de romper algun componente del vehiculo al estar en tan

@@ -30,7 +30,7 @@ export const Container = styled.div`
 export const ContainerImages = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  height: 100%;
+  height: 400px;
   gap: 3vw;
   background-color: #042c89;
   padding: 10px;
