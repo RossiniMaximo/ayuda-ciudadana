@@ -30,7 +30,7 @@ export const Container = styled.div`
 export const ContainerImages = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  height: 400px;
+  height: 500px;
   gap: 3vw;
   background-color: #042c89;
   padding: 10px;
@@ -41,6 +41,9 @@ export const ContainerImages = styled.div`
     margin-top: 50px;
     margin-left: 20px;
   }
+  @media (min-width: 600px) {
+    height: 400px;
+  }
 `;
 
 export const ContainerNextPage = styled.div`
@@ -48,7 +51,7 @@ export const ContainerNextPage = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 20px;
   gap: 50px;
 `;
 

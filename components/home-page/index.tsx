@@ -55,7 +55,7 @@ export function HomePage() {
         </ContainerSeparator>
         <ResponsiveContainer>
           <div>
-            <ButtonContainer onClick={() => push("#about_us")}>
+            <ButtonContainer onClick={() => push("/about-us")}>
               <CalltoActionButton>Más información</CalltoActionButton>
             </ButtonContainer>
             <div className={styles.links_nav}>

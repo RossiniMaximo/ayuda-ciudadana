@@ -27,8 +27,6 @@ export function MoreInfo() {
   ];
 
   const MainContainer = styled.div`
-    overflow: auto;
-    height: 1100px;
     background: linear-gradient(90deg, #005aff, #0544b9, #001aff, #0603a3);
     background-size: 400% 400%;
     animation: gradient 6s ease infinite;
@@ -88,7 +86,7 @@ export function MoreInfo() {
                 breve explicación de cómo funciona nuestro sistema de reportes.
               </BodyWhiteAnimText>
             </ContainerVideoText>
-            <div onClick={() => push("#video")}>
+            <div onClick={() => push("/video")}>
               <FormButton>Ver vídeo</FormButton>
             </div>
           </ContainerNextPage>

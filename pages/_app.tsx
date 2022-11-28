@@ -3,6 +3,8 @@ import type { AppProps } from "next/app";
 import "/lib/base.css";
 import "../styles/globals.css";
 import Head from "next/head";
+import { RecoilRoot } from "recoil";
+import { Layout } from "../components/layout";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -15,7 +17,11 @@ export default function App({ Component, pageProps }: AppProps) {
           rel="stylesheet"
         />
       </Head>
-      <Component {...pageProps} />;
+      <RecoilRoot>
+        <Layout>
+          <Component {...pageProps} />;
+        </Layout>
+      </RecoilRoot>
     </div>
   );
 }

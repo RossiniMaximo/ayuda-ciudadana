@@ -3,12 +3,7 @@ import styles from "./layout.module.css";
 import { HamburguerMenu } from "../../ui/icons";
 import { useState, useEffect } from "react";
 
-type layoutProps = {
-  children: any;
-  links: any;
-};
-
-export function Layout(props: layoutProps) {
+export function Layout({ children }: any) {
   const [isActive, setIsActive] = useState(false);
 
   const style = isActive ? { rotate: "90deg" } : {};
@@ -25,11 +20,9 @@ export function Layout(props: layoutProps) {
           {isActive ? (
             <div className={styles.low_res_menu}>
               <nav className={styles.links_container}>
-                <Link href={"#" + props.links.firstLink}>Inicio</Link>
-                <Link href={"#" + props.links.secondLink}>
-                  Nuestra propuesta
-                </Link>
-                <Link href={"#" + props.links.thirdLink}>Suscribite</Link>
+                <Link href="/home">Inicio</Link>
+                <Link href="/about-us">Nuestra propuesta</Link>
+                <Link href="/contact-us">Suscribite</Link>
                 <p
                   style={{ color: "white" }}
                   onClick={() => setIsActive(false)}
@@ -48,13 +41,13 @@ export function Layout(props: layoutProps) {
           <div className={styles.left_half}>
             <p className={styles.logo}>DINT</p>
             <nav className={styles.nav}>
-              <Link className={styles.link} href={"#" + props.links.firstLink}>
+              <Link className={styles.link} href="/home">
                 Inicio
               </Link>
-              <Link className={styles.link} href={"#" + props.links.secondLink}>
+              <Link className={styles.link} href="/about-us">
                 Nuestra propuesta
               </Link>
-              <Link className={styles.link} href={"#" + props.links.thirdLink}>
+              <Link className={styles.link} href="/contact-us">
                 Suscribete
               </Link>
             </nav>
@@ -67,7 +60,7 @@ export function Layout(props: layoutProps) {
           </div>
         </header>
       </div>
-      {props.children}
+      {children}
     </div>
   );
 }

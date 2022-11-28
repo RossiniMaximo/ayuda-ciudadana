@@ -33,7 +33,7 @@ const MainContainer = styled.div`
   animation: gradient 10s ease infinite;
   padding-top: 20px;
   @media (min-width: 600px) {
-    height: 900px;
+    height: 650px;
   }
 
   @keyframes gradient {

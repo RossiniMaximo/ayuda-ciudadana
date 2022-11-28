@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { storage } from "../../lib/firestore";
+import { createAReport } from "../../lib/api-calls";
 import styles from "./searchform.module.css";
 
 export function SearchLocation(props: any) {
@@ -13,19 +14,43 @@ export function SearchLocation(props: any) {
     e.preventDefault();
     const localization = e.target.localization.value;
     const description = e.target.description.value;
-    if (localization != undefined && localization != "") {
-      const res = await fetch(
-        "https://us1.locationiq.com/v1/search.php?key=pk.bf4604bc2b3ea328e732de26a4387fa9&q=" +
-          localization +
-          "&format=json"
-      );
-      const data = await res.json();
-      const { lat, lon } = data[0];
-      setLat(lat);
-      setLon(lon);
-      return props.onChange(lat, lon, description, { img: imgURL });
+
+    if (localization == undefined || localization == "") {
+      throw { error: "Se necesitan parametros de búsqueda" };
     }
+
+    const res = await fetch(
+      "https://us1.locationiq.com/v1/search.php?key=pk.bf4604bc2b3ea328e732de26a4387fa9&q=" +
+        localization +
+        "&format=json"
+    );
+    const data = await res.json();
+    const { lat, lon } = data[0];
+    setLat(lat);
+    setLon(lon);
+
+    const created = await createAReport(
+      localization,
+      description,
+      imgURL,
+      lat,
+      lon
+    );
+
+    if (imgURL != "") {
+      props.onChange(
+        lat,
+        lon,
+        description,
+        imgURL,
+        localization,
+        created.UserId,
+        created.status
+      );
+    }
+    return created;
   }
+
   async function handleChange(e: any) {
     if (e.target.files[0]) {
       const newImage = e.target.files[0];
@@ -76,11 +101,6 @@ export function SearchLocation(props: any) {
             rows={10}
             placeholder="Calle en muy mal estado , pozo profundo en mitad de la calle, coloque una madera para que no lo pisen..."
           ></textarea>
-          {/*  <input
-            className={styles.description_input}
-            type="text"
-            name="description"
-          /> */}
         </label>
         <label className={styles.image_label} htmlFor="image">
           Seleccionar imagen

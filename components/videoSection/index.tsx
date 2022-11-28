@@ -54,7 +54,9 @@ export function VideoSection() {
         </div>
       </div>
       <div className={styles.btn_container}>
-        <FormButton event={() => router.push("#form")}>Suscribete</FormButton>
+        <FormButton event={() => router.push("/contact-us")}>
+          Suscribete
+        </FormButton>
       </div>
     </div>
   );

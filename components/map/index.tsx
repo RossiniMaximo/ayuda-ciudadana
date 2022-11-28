@@ -1,12 +1,16 @@
 import "leaflet/dist/leaflet.css";
-
 import styles from "./map.module.css";
 import { MapContainer, TileLayer, Popup, Marker, useMap } from "react-leaflet";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SearchLocation } from "../searchForm";
 import { Icon } from "leaflet";
-import Image from "next/image";
 import { MapIcon, CrossIcon } from "../../ui/icons";
+import { ReportCard } from "../../ui/cards/report_card";
+import { ReportProps } from "../../.d";
+import { getAllReports } from "../../lib/api-calls";
+import { PopupComp } from "../../ui/popup";
+import { useIsEditCard } from "../../lib/hooks";
+import { EditReport } from "../editReport";
 
 const icon = new Icon({
   iconUrl: "/maintenance.png",
@@ -20,19 +24,23 @@ function MoveMaker({ lat, lng }: any) {
 }
 
 const Map = () => {
+  const [isEditMap, setIsEditMap] = useIsEditCard();
   const [lat, setLat] = useState(-34.57879931934594);
   const [lng, setLng] = useState(-58.42633754889879);
-  const [reports, setReports] = useState([]) as any;
+  const [reports, setReports] = useState<any[]>([]);
   const [activeReport, setActiveReport] = useState(null) as any;
   const [isActiveMap, setIsActiveMap] = useState(false);
+  const [isCreated, setIsCreated] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
 
-  /* 
-  useEffect(()=>{
-    fetch reportes
-    {lat,lon} extraer coords
-    setCoords([...cords,{lat,long}])
-  },[])
-*/
+  async function pullReports() {
+    const reports = await getAllReports();
+    setReports(reports);
+  }
+
+  useEffect(() => {
+    pullReports();
+  }, []);
 
   function popupOnClick() {
     setActiveReport(false);
@@ -50,33 +58,44 @@ const Map = () => {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {reports.map((report: any) => {
+        {reports.map((r: ReportProps) => {
           return (
-            <div key={report}>
+            <div key={r.id}>
               <Marker
                 eventHandlers={{}}
-                position={[report.lat, report.lon]}
+                position={[r.latitude, r.longitude]}
                 icon={icon}
               >
-                <Popup position={[report.lat, report.lon]}>
-                  <div className={styles.report_content}>
-                    <h4 className={styles.report_description}>
-                      {report.description}
-                    </h4>
-                    <Image
-                      src={report.img.img}
-                      alt=""
-                      height={100}
-                      width={250}
-                      className={styles.report_image}
-                    />
-                  </div>
+                <Popup position={[r.latitude, r.longitude]}>
+                  <ReportCard
+                    title={r.title}
+                    id={r.id}
+                    latitude={r.latitude}
+                    longitude={r.longitude}
+                    description={r.description}
+                    image={r?.image}
+                    status={r.status}
+                    UserId={r.UserId}
+                    onDelete={(reportId: number) => {
+                      let newArr = [...reports];
+                      const report = reports.find((r: ReportProps) => {
+                        if (r.id == reportId) {
+                          return r;
+                        }
+                      });
+                      const index = reports.indexOf(report);
+                      if (index > -1) {
+                        newArr.splice(index, 1);
+                        setIsDeleted(true);
+                        setReports(newArr);
+                      }
+                    }}
+                  />
                 </Popup>
               </Marker>
             </div>
           );
         })}
-
         {activeReport ? (
           <div>
             <Popup
@@ -92,6 +111,30 @@ const Map = () => {
           ""
         )}
       </MapContainer>
+      {isCreated ? (
+        <div className={styles.popup_container}>
+          <PopupComp
+            text="Reporte creado exitosamente."
+            buttonText="cerrar"
+            onClickEvent={() => setIsCreated(false)}
+          />
+        </div>
+      ) : (
+        ""
+      )}
+
+      {isDeleted ? (
+        <div className={styles.popup_container}>
+          <PopupComp
+            text="Reporte eliminado satisfactifactoriamente."
+            buttonText="cerrar"
+            onClickEvent={() => setIsDeleted(false)}
+          />
+        </div>
+      ) : (
+        ""
+      )}
+
       {!isActiveMap ? (
         <div
           style={{
@@ -120,15 +163,46 @@ const Map = () => {
               lat: number,
               lon: number,
               description: string,
-              img: string
+              img: any,
+              title: string,
+              UserId: number,
+              status: string
             ) => {
               setLat(lat);
               setLng(lon);
-              setReports([...reports, { lat, lon, description, img }]);
+              setReports([
+                ...reports,
+                {
+                  title,
+                  latitude: lat,
+                  longitude: lon,
+                  description,
+                  image: img,
+                  UserId,
+                  status,
+                },
+              ]);
+              setIsCreated(true);
               setIsActiveMap(false);
             }}
           />
         </div>
+      ) : (
+        ""
+      )}
+      {isEditMap ? (
+        <EditReport
+          onUpdate={(editedReport) => {
+            reports.find((r: ReportProps) => {
+              if (r.id == editedReport.id) {
+                r.image = editedReport.image;
+                r.description = editedReport.description;
+                r.status = editedReport.status;
+                setReports([...reports, r]);
+              }
+            });
+          }}
+        />
       ) : (
         ""
       )}
@@ -137,17 +211,3 @@ const Map = () => {
 };
 
 export default Map;
-{
-  /*  
-  iterar reportes para poner marks
-
-   {reports.map((report: any) => {
-          return (
-            <div onClick={()=>{
-              setActiveReport(report)
-            }}>
-              <Marker position={[report.lat, report.lon]} icon={icon}></Marker>;
-            </div>
-          );
-        })} */
-}

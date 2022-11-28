@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 .location_label {
@@ -101,15 +101,26 @@
 .progress_bar_container {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
 }
 .progress_bar_container > p {
   margin-right: -50px;
 }
 
+.progress_bar::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+.progress_bar::-webkit-progress-value {
+  border-radius: 2px;
+  background-color: var(--buttonColor);
+}
 .progress_bar {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 175px;
   height: 25px;
-  width: 250px;
 }
 
 .load_img_btn__container {
