@@ -17,4 +17,5 @@ a {
 :root {
   --buttonColor: rgb(2, 70, 115);
   --textColor: black;
+  --white: #ffffff;
 }

@@ -53,6 +53,7 @@ export function EditReport(props: EditReportProps) {
         imgUrl,
         status
       );
+      console.log("Update :", update);
       props.onUpdate(update);
     }
     setIsEditMap(false);

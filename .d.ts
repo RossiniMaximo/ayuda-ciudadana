@@ -14,3 +14,11 @@ export type ReportProps = {
 export type EditReportProps = {
   onUpdate: (a: ReportProps) => any;
 };
+
+export type UserReportsProps = {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  status: string;
+};

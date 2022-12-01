@@ -11,28 +11,30 @@ export function Layout({ children }: any) {
   return (
     <div className={styles.container}>
       <div className={styles.low_res_content}>
-        <header
-          className={styles.low_res_header}
-          onClick={() => setIsActive(!isActive)}
-        >
+        <header className={styles.low_res_header}>
           <p className={styles.logo}>DINT</p>
-          <HamburguerMenu size={40} style={style} color="ffffff" />
+
           {isActive ? (
             <div className={styles.low_res_menu}>
               <nav className={styles.links_container}>
-                <Link href="/home">Inicio</Link>
-                <Link href="/about-us">Nuestra propuesta</Link>
-                <Link href="/contact-us">Suscribite</Link>
-                <p
-                  style={{ color: "white" }}
-                  onClick={() => setIsActive(false)}
-                >
-                  Volver
-                </p>
+                <Link onClick={() => setIsActive(false)} href="/home">
+                  Inicio
+                </Link>
+                <Link onClick={() => setIsActive(false)} href="/about-us">
+                  Nuestra propuesta
+                </Link>
+                <Link onClick={() => setIsActive(false)} href="/contact-us">
+                  Suscribite
+                </Link>
               </nav>
+              <div onClick={() => setIsActive(false)}>
+                <HamburguerMenu size={40} style={style} color="black" />
+              </div>
             </div>
           ) : (
-            ""
+            <div onClick={() => setIsActive(!isActive)}>
+              <HamburguerMenu size={40} style={style} color="ffffff" />
+            </div>
           )}
         </header>
       </div>

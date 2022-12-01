@@ -1,9 +1,9 @@
-import { VideoScene } from "../components/mapSection";
+import { MapComponent } from "../components/dinamicMap";
 
-export default function VideoPage() {
+export default function MapPageComp() {
   return (
     <div>
-      <VideoScene />
+      <MapComponent />
     </div>
   );
 }

@@ -8,23 +8,25 @@
 .location_label {
   font-size: 14px;
   color: var(--textColor);
+  display: flex;
+  flex-direction: column;
+  width: 250px;
 }
 @media (min-width: 600px) {
   .location_label {
-    display: flex;
-    flex-direction: column;
     font-size: 16px;
+    width: 300px;
   }
 }
 .location_input::placeholder {
-  font-size: 10px;
+  font-size: 12px;
 }
 .location_input {
-  padding: 4px;
+  padding: 8px;
   outline: none;
   font-size: 14px;
   border-radius: 6px;
-  border: solid 2px var(--buttonColor);
+  border: solid 2px black;
 }
 @media (min-width: 600px) {
   .location_input::placeholder {
@@ -38,25 +40,29 @@
 .desription_label {
   font-size: 14px;
   color: var(--textColor);
+  display: flex;
+  flex-direction: column;
+  width: 250px;
 }
 @media (min-width: 600px) {
   .desription_label {
+    width: 300px;
     display: flex;
     flex-direction: column;
     font-size: 16px;
   }
 }
 .description_text_area::placeholder {
-  font-size: 10px;
+  font-size: 12px;
 }
 .description_text_area {
-  padding: 4px;
-  font-size: 14px;
-  width: 180px;
-  height: 75px;
+  padding: 8px;
+  font-size: 12px;
+  width: 100%;
+  height: 110px;
   resize: none;
   outline: none;
-  border: solid 2px var(--buttonColor);
+  border: solid 2px black;
   border-radius: 6px;
 }
 @media (min-width: 600px) {
@@ -83,11 +89,12 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  background-color: var(--buttonColor);
+  background-color: black;
+  width: 250px;
 }
 @media (min-width: 600px) {
   .image_label {
-    width: 250px;
+    width: 300px;
     padding: 8px;
     font-size: 14px;
   }
@@ -114,7 +121,7 @@
 }
 .progress_bar::-webkit-progress-value {
   border-radius: 2px;
-  background-color: var(--buttonColor);
+  background-color: black;
 }
 .progress_bar {
   -webkit-appearance: none;
@@ -122,13 +129,28 @@
   width: 175px;
   height: 25px;
 }
+@media (min-width: 600px) {
+  .progress_bar {
+    width: 250px;
+  }
+}
+.progress_counter {
+}
+@media (min-width: 600px) {
+  .progress_counter {
+    font-size: 10px;
+  }
+}
 
 .load_img_btn__container {
-  width: 150px;
+  width: 250px;
+  height: 35px;
 }
 @media (min-width: 600px) {
   .load_img_btn__container {
-    width: 250px;
+    width: 300px;
+    margin-top: 20px;
+    height: 35px;
   }
 }
 /* .load_img_btn:hover {
@@ -140,10 +162,11 @@
   width: 100%;
   padding: 6px;
   border-radius: 10px;
-  background-color: var(--buttonColor);
+  background-color: black;
   color: white;
   border: none;
   cursor: pointer;
+  height: 100%;
 }
 @media (min-width: 600px) {
   .load_img_btn {
@@ -153,10 +176,12 @@
 }
 .search_btn_container {
   width: 150px;
+  height: 35px;
+  width: 250px;
 }
 @media (min-width: 600px) {
   .search_btn_container {
-    width: 250px;
+    width: 300px;
   }
 }
 /* .search_btn:hover {
@@ -168,10 +193,11 @@
   width: 100%;
   padding: 6px;
   border-radius: 10px;
-  background-color: var(--buttonColor);
+  background-color: black;
   border: none;
   color: white;
   cursor: pointer;
+  height: 100%;
 }
 @media (min-width: 600px) {
   .search_btn {

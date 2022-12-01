@@ -32,16 +32,16 @@ export function ReportCard(props: ReportProps) {
       {props.UserId == userId ? (
         <div className={styles.card_options_container}>
           <div className={styles.delete_icon_container} onClick={handleDelete}>
-            <DeleteIcon size={15} />
+            <DeleteIcon size={15} color="black" />
           </div>
           <div
-            className={styles.delete_icon_container}
+            className={styles.edit_icon_container}
             onClick={() => {
               setIsEditCard(true);
               setCardToEditId(props.id);
             }}
           >
-            <EditIcon size={15} />
+            <EditIcon color="black" fill="black" size={15} />
           </div>
         </div>
       ) : (

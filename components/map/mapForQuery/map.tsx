@@ -1,16 +1,16 @@
 import "leaflet/dist/leaflet.css";
-import styles from "./map.module.css";
+import styles from "../map.module.css";
 import { MapContainer, TileLayer, Popup, Marker, useMap } from "react-leaflet";
 import { useState, useEffect } from "react";
-import { SearchLocation } from "../searchForm";
+import { SearchLocation } from "../../searchForm";
 import { Icon } from "leaflet";
-import { MapIcon, CrossIcon } from "../../ui/icons";
-import { ReportCard } from "../../ui/cards/report_card";
-import { ReportProps } from "../../.d";
-import { getAllReports } from "../../lib/api-calls";
-import { PopupComp } from "../../ui/popup";
-import { useIsEditCard } from "../../lib/hooks";
-import { EditReport } from "../editReport";
+import { MapIcon, CrossIcon } from "../../../ui/icons";
+import { ReportCard } from "../../../ui/cards/report_card";
+import { ReportProps } from "../../../.d";
+import { getAllReports } from "../../../lib/api-calls";
+import { PopupComp } from "../../../ui/popup";
+import { useIsEditCard } from "../../../lib/hooks";
+import { EditReport } from "../../editReport";
 
 const icon = new Icon({
   iconUrl: "/maintenance.png",
@@ -19,11 +19,21 @@ const icon = new Icon({
 
 function MoveMaker({ lat, lng }: any) {
   const map = useMap();
-  map.flyTo([lat, lng]);
-  return null;
+  if (lat != undefined && lng != undefined) {
+    map.flyTo([lat, lng]);
+    return null;
+  } else {
+    return null;
+  }
 }
 
-const Map = () => {
+const Map = ({
+  latitude,
+  longitude,
+}: {
+  latitude: number;
+  longitude: number;
+}) => {
   const [isEditMap, setIsEditMap] = useIsEditCard();
   const [lat, setLat] = useState(-34.57879931934594);
   const [lng, setLng] = useState(-58.42633754889879);
@@ -40,6 +50,8 @@ const Map = () => {
 
   useEffect(() => {
     pullReports();
+    setLat(latitude);
+    setLng(longitude);
   }, []);
 
   function popupOnClick() {

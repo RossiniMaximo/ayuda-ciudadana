@@ -118,7 +118,7 @@ export function SearchLocation(props: any) {
               value={progress}
               max="100"
             />
-            <p>{progress + "%"}</p>
+            <p className={styles.progress_counter}>{progress + "%"}</p>
           </div>
 
           <div className={styles.load_img_btn__container}>
