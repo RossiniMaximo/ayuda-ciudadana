@@ -11,6 +11,7 @@ export function UserReports() {
       {userReports?.map((r: ReportProps) => {
         return (
           <ProfileReportsCard
+            key={r.id}
             id={r.id}
             title={r.title}
             description={r.description}
