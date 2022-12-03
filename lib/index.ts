@@ -1,27 +1,23 @@
 function getStoragedToken() {
-  return localStorage.getItem("auth_token");
+  const token = localStorage.getItem("token");
+  if (token) return JSON.parse(token).token;
+  else return null;
 }
 
-function setStoragedToken(data: { a: string | number }) {
-  localStorage.setItem("auth_token", JSON.stringify(data));
-}
-
-const LOCAL_PORT = "http://localhost:3001/api";
+const API_URL = "https://ayuda-ciudadana-api.vercel.app/api";
 
 export async function fetchAPI(input: RequestInfo, init?: any) {
-  const token = getStoragedToken();
   const newInit = init || {};
-  newInit.headers ||= {};
+  newInit.headers = newInit.headers || {};
+  const token = getStoragedToken();
+
   if (token) {
     newInit.headers.authorization = "Bearer" + " " + token;
   }
   if (newInit.body) {
     newInit.body = JSON.stringify(newInit.body);
   }
-
-  const res = await fetch(LOCAL_PORT + input, newInit);
-
-  console.log(res);
+  const res = await fetch(API_URL + input, newInit);
   if (res.status >= 200 && res.status < 300) {
     const data = await res.json();
     return data;

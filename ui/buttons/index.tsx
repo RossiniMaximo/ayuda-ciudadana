@@ -1,47 +1,12 @@
-import styled from "styled-components";
+import { useEffect, useRef } from "react";
+import styles from "./anim.module.css";
+import { LoginAnim, CallToAction, Login, Register, Form, Logout } from "./styled";
 
 interface buttonProps {
+  onClick?: any;
   children: any;
-  event?: any;
+  anim?: boolean;
 }
-
-const CallToAction = styled.button`
-  border-radius: 10px;
-  border: none;
-  background-color: #f57359;
-  font-size: 20px;
-  font-family: "Poppins";
-  font-weight: 500;
-  width: 200px;
-  height: 47px;
-  color: white;
-  cursor: pointer;
-`;
-
-const Form = styled(CallToAction)`
-  font-weight: 600;
-  font-size: 24px;
-  width: 250px;
-  height: 60px;
-  @media (max-width: 600px) {
-    font-size: 16px;
-    width: 170px;
-    height: 45px;
-  }
-`;
-
-const Login = styled(CallToAction)`
-  background-color: transparent;
-  font-weight: 500;
-  font-size: 15px;
-  width: 150px;
-`;
-
-const Register = styled(Login)`
-  border: solid 1px white;
-  width: 120px;
-  height: 40px;
-`;
 
 export function CalltoActionButton({ children }: buttonProps) {
   return <CallToAction>{children}</CallToAction>;
@@ -55,6 +20,35 @@ export function RegisterButton({ children }: buttonProps) {
   return <Register>{children}</Register>;
 }
 
-export function FormButton({ children, event }: buttonProps) {
-  return <Form onClick={event}>{children}</Form>;
+export function LogoutButton({ children }: buttonProps) {
+  return <Logout>{children}</Logout>;
+}
+
+export function FormButton({ children }: buttonProps) {
+  return <Form>{children}</Form>;
+}
+
+export function AnimButton({ anim, onClick, children }: buttonProps) {
+  const buttonRef = useRef(null as any);
+
+  useEffect(() => {
+    const span = buttonRef.current.firstChild as HTMLElement;
+    if (anim) {
+      buttonRef.current.disabled = true;
+      if (!span.textContent) span.textContent = children;
+      else span.textContent = "";
+      span.classList.toggle(styles.spinner);
+      return onClick;
+    } else {
+      buttonRef.current.disabled = false;
+      span.textContent = children;
+      span.classList.remove(styles.spinner);
+    }
+  }, [anim]);
+
+  return (
+    <LoginAnim ref={buttonRef} onClick={onClick}>
+      <span>{children}</span>
+    </LoginAnim>
+  );
 }

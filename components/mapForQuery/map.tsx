@@ -1,16 +1,16 @@
 import "leaflet/dist/leaflet.css";
-import styles from "../map.module.css";
+import styles from "../map/map.module.css";
 import { MapContainer, TileLayer, Popup, Marker, useMap } from "react-leaflet";
 import { useState, useEffect } from "react";
-import { SearchLocation } from "../../searchForm";
+import { SearchLocation } from "../searchForm";
 import { Icon } from "leaflet";
-import { MapIcon, CrossIcon } from "../../../ui/icons";
-import { ReportCard } from "../../../ui/cards/report_card";
-import { ReportProps } from "../../../.d";
-import { getAllReports } from "../../../lib/api-calls";
-import { PopupComp } from "../../../ui/popup";
-import { useIsEditCard } from "../../../lib/hooks";
-import { EditReport } from "../../editReport";
+import { MapIcon, CrossIcon } from "ui/icons";
+import { ReportCard } from "ui/cards/report_card";
+import { ReportProps } from ".d";
+import { getAllReports } from "lib/api-calls";
+import { PopupComp } from "ui/popup";
+import { useIsEditCard } from "lib/hooks";
+import { EditReport } from "../editReport";
 
 const icon = new Icon({
   iconUrl: "/maintenance.png",
@@ -27,13 +27,7 @@ function MoveMaker({ lat, lng }: any) {
   }
 }
 
-const Map = ({
-  latitude,
-  longitude,
-}: {
-  latitude: number;
-  longitude: number;
-}) => {
+const Map = ({ latitude, longitude }: { latitude: number; longitude: number }) => {
   const [isEditMap, setIsEditMap] = useIsEditCard();
   const [lat, setLat] = useState(-34.57879931934594);
   const [lng, setLng] = useState(-58.42633754889879);
@@ -73,11 +67,7 @@ const Map = ({
         {reports.map((r: ReportProps) => {
           return (
             <div key={r.id}>
-              <Marker
-                eventHandlers={{}}
-                position={[r.latitude, r.longitude]}
-                icon={icon}
-              >
+              <Marker eventHandlers={{}} position={[r.latitude, r.longitude]} icon={icon}>
                 <Popup position={[r.latitude, r.longitude]}>
                   <ReportCard
                     title={r.title}
@@ -148,10 +138,7 @@ const Map = ({
       )}
 
       {!isActiveMap ? (
-        <div
-          className={styles.map_icon_container}
-          onClick={() => setIsActiveMap(true)}
-        >
+        <div className={styles.map_icon_container} onClick={() => setIsActiveMap(true)}>
           <MapIcon size={40} color="black" />
         </div>
       ) : (
@@ -159,10 +146,7 @@ const Map = ({
       )}
       {isActiveMap ? (
         <div className={styles.search_form__container}>
-          <div
-            className={styles.cross_icon}
-            onClick={() => setIsActiveMap(false)}
-          >
+          <div className={styles.cross_icon} onClick={() => setIsActiveMap(false)}>
             <CrossIcon size={20} />
           </div>
           <SearchLocation

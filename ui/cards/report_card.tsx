@@ -21,13 +21,7 @@ export function ReportCard(props: ReportProps) {
       <h6 className={styles.report_description}>{props.title}</h6>
       <h6 className={styles.report_description}>{props.description}</h6>
       <h6 className={styles.report_description}>Estado : {props.status}</h6>
-      <Image
-        src={props.image}
-        alt=""
-        height={100}
-        width={250}
-        className={styles.report_image}
-      />
+      <Image src={props.image} alt="" height={100} width={250} className={styles.report_image} />
 
       {props.UserId == userId ? (
         <div className={styles.card_options_container}>

@@ -29,7 +29,7 @@
   align-items: center;
   gap: 150px;
   width: 633px;
-  color: var(--white);
+  color: #ffffff;
 }
 .logo {
   font-size: 30px;
@@ -48,7 +48,7 @@
   justify-content: flex-end;
   align-items: center;
   gap: 23px;
-  color: var(--white);
+  color: #ffffff;
 }
 .login {
   font-size: 16px;
@@ -59,11 +59,11 @@
 }
 .btn {
   background-color: transparent;
-  color: var(--white);
+  color: #ffffff;
   font-size: 16px;
   padding: 11px;
   border-radius: 5px;
-  border: solid 1px var(--white);
+  border: solid 1px #ffffff;
   cursor: pointer;
 }
 .low_res_content {
@@ -80,25 +80,21 @@
   align-items: center;
   justify-content: space-between;
   padding: 6px;
-  border: solid 1px;
 }
 .logo {
   font-size: 22px;
   margin: 0;
-  color: var(--white);
+  color: #ffffff;
 }
 .low_res_menu {
-  height: 170px;
-  width: 100%;
+  background-color: #ffffff;
+
+  width: 200px;
   padding: 6px;
   position: absolute;
-  z-index: 1;
   left: 0;
   top: 0;
   border-radius: 0 10px 10px 10px;
-  display: flex;
-  justify-content: space-between;
-  background-color: var(--white);
 }
 .links_container {
   display: flex;

@@ -6,7 +6,7 @@ interface textProps {
 
 const BodyWhite = styled.p`
   font-weight: 500;
-  font-size: 16px;
+  font-size: 18px;
   margin: 0;
   @media (max-width: 600px) {
     font-size: 15px;
@@ -14,7 +14,7 @@ const BodyWhite = styled.p`
   color: white;
   transform: translateX(-600px);
   animation: 1.7s slideIn ease-in-out forwards 0.1s;
-  z-index: 10;
+  z-index: 2;
   opacity: 0;
   position: relative;
 
@@ -51,7 +51,7 @@ const TitleWhite = styled.h1`
   color: white;
   transform: translateX(-600px);
   animation: 1.2s slideIn ease-in-out forwards 0.1s;
-  z-index: 10;
+  z-index: 2;
   opacity: 0;
   position: relative;
 
@@ -80,7 +80,7 @@ const TitleWhite = styled.h1`
 
 const SubtitleWhite = styled.h3`
   font-weight: 800;
-  font-size: 32px;
+  font-size: 40px;
   text-align: center;
   margin: 0;
   @media (max-width: 600px) {
@@ -89,7 +89,7 @@ const SubtitleWhite = styled.h3`
   color: white;
   transform: translateX(-600px);
   animation: 1.2s slideIn ease-in-out forwards 0.1s;
-  z-index: 10;
+  z-index: 2;
   opacity: 0;
   position: relative;
 
@@ -124,6 +124,6 @@ export function SubtitleWhiteAnimText({ children }: textProps) {
   return <SubtitleWhite>{children}</SubtitleWhite>;
 }
 
-export function BodyWhiteAnimText({ children }: any) {
+export function BodyWhiteAnimText({ children }: textProps) {
   return <BodyWhite>{children}</BodyWhite>;
 }

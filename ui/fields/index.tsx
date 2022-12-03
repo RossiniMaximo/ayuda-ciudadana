@@ -1,8 +1,12 @@
 import styled from "styled-components";
-import { LargeWhiteText } from "../typography";
+import { BodyWhiteText, LargeWhiteText, BodyText } from "../typography";
 
 interface fieldsProps {
   children: any;
+  name: string;
+  value?: string;
+  required: boolean;
+  readonly?: boolean;
   type: "email" | "password" | "text" | "phone";
 }
 
@@ -29,12 +33,40 @@ const Input = styled.input`
   }
 `;
 
-export function PrimaryField({ children, type }: fieldsProps) {
+const InputSecondary = styled(Input)`
+  width: 230px;
+  font-size: 14px;
+  height: 40px;
+`;
+
+export function PrimaryField({ name, required, children, type }: fieldsProps) {
   return (
     <Container>
       <Label>
         <LargeWhiteText>{children}</LargeWhiteText>
-        <Input type={type} />
+        <Input name={name} required={required} type={type} />
+      </Label>
+    </Container>
+  );
+}
+
+export function SecondaryField({ readonly, value, name, required, children, type }: fieldsProps) {
+  return (
+    <Container>
+      <Label>
+        <BodyWhiteText>{children}</BodyWhiteText>
+        {readonly ? (
+          <InputSecondary
+            onChange={() => {}}
+            readOnly
+            defaultValue={value || ""}
+            name={name}
+            required={required}
+            type={type}
+          />
+        ) : (
+          <InputSecondary defaultValue={value || ""} name={name} required={required} type={type} />
+        )}
       </Label>
     </Container>
   );

@@ -22,10 +22,9 @@ export function VideoSection() {
         <div className={styles.text_container}>
           <h4 className={styles.text_title}>Características de reporte</h4>
           <p className={styles.text}>
-            A continuación además del vídeo comentando las características y
-            profundizando sobre el funcionamiento de reporte, agregaremos un
-            pequeño listando de las características más importantes que contamos
-            en nuestro sistema de reportes.
+            A continuación además del vídeo comentando las características y profundizando sobre el
+            funcionamiento de reporte, agregaremos un pequeño listando de las características más
+            importantes que contamos en nuestro sistema de reportes.
           </p>
         </div>
         <div className={styles.caracteristics_container}>
@@ -50,13 +49,13 @@ export function VideoSection() {
           )}
         </div>
         <div className={styles.image_container}>
-          <Image src={Img} alt="" height={200} width={350} />
+          <div className={styles.img}>
+            <Image src={Img} alt="" layout="responsive" objectFit="contain" />
+          </div>
         </div>
-      </div>
-      <div className={styles.btn_container}>
-        <FormButton event={() => router.push("/contact-us")}>
-          Suscribete
-        </FormButton>
+        <div onClick={() => router.push("/map")}>
+          <FormButton>útilizar mapa</FormButton>
+        </div>
       </div>
     </div>
   );
