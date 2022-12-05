@@ -8,7 +8,7 @@ const nextConfig = withSvgr({
     styledComponents: true,
   },
   images: {
-    domains: ["firebasestorage.googleapis.com"],
+    domains: ["firebasestorage.googleapis.com", "i.postimg.cc"],
   },
 });
 

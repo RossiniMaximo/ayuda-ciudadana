@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getReportById } from "../../lib/api-calls";
-import { DynamicMapForQuery } from "../map/mapForQuery";
+import { DynamicMapForQuery } from "../mapForQuery";
 
 export function HandleQueryMapComp(reportId: any) {
   const [lat, setLat] = useState(0);

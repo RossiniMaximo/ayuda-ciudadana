@@ -33,7 +33,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const SocialsLink = styled.div`
-  margin-top: 70px;
+  margin-top: 150px;
   gap: 20px;
 
   @media (max-width: 600px) {

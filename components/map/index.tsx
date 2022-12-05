@@ -61,11 +61,7 @@ const Map = () => {
         {reports.map((r: ReportProps) => {
           return (
             <div key={r.id}>
-              <Marker
-                eventHandlers={{}}
-                position={[r.latitude, r.longitude]}
-                icon={icon}
-              >
+              <Marker eventHandlers={{}} position={[r.latitude, r.longitude]} icon={icon}>
                 <Popup position={[r.latitude, r.longitude]}>
                   <ReportCard
                     title={r.title}
@@ -136,21 +132,17 @@ const Map = () => {
       )}
 
       {!isActiveMap ? (
-        <div
-          className={styles.map_icon_container}
-          onClick={() => setIsActiveMap(true)}
-        >
-          <MapIcon size={40} color="black" />
+        <div className={styles.containerIconMap}>
+          <div onClick={() => setIsActiveMap(true)} className={styles.buttonMapReport}>
+            <MapIcon size={40} color="black" />
+          </div>
         </div>
       ) : (
         ""
       )}
       {isActiveMap ? (
         <div className={styles.search_form__container}>
-          <div
-            className={styles.cross_icon}
-            onClick={() => setIsActiveMap(false)}
-          >
+          <div className={styles.cross_icon} onClick={() => setIsActiveMap(false)}>
             <CrossIcon size={20} />
           </div>
           <SearchLocation

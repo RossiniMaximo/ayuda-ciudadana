@@ -5,7 +5,6 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 600px;
 `;
 
 export const DescriptionContainer = styled.div`
@@ -16,7 +15,7 @@ export const DescriptionContainer = styled.div`
   }
 `;
 
-export const FormContainer = styled.div`
+export const FormContainer = styled.form`
   margin-top: 120px;
   display: flex;
   flex-direction: column;

@@ -15,7 +15,7 @@
 @media (min-width: 600px) {
   .location_label {
     font-size: 16px;
-    width: 300px;
+    width: 250px;
   }
 }
 .location_input::placeholder {
@@ -134,23 +134,17 @@
     width: 250px;
   }
 }
-.progress_counter {
-}
 @media (min-width: 600px) {
   .progress_counter {
     font-size: 10px;
   }
 }
-
 .load_img_btn__container {
   width: 250px;
-  height: 35px;
 }
 @media (min-width: 600px) {
   .load_img_btn__container {
     width: 300px;
-    margin-top: 20px;
-    height: 35px;
   }
 }
 /* .load_img_btn:hover {
@@ -175,9 +169,8 @@
   }
 }
 .search_btn_container {
-  width: 150px;
-  height: 35px;
   width: 250px;
+  height: 35px;
 }
 @media (min-width: 600px) {
   .search_btn_container {

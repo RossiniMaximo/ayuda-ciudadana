@@ -28,6 +28,7 @@
   background-color: orange;
   border-radius: 12px;
 }
+
 .edit_icon_container {
   display: flex;
   justify-content: end;

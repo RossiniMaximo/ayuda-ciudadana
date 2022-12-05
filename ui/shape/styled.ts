@@ -7,8 +7,8 @@ export const ShapeContainer = styled.div`
   justify-content: center;
   max-width: 250px;
   max-height: 250px;
-  height: 150px;
-  width: 200px;
+  height: 17vw;
+  width: 17vw;
   margin: auto;
   border-radius: 50%;
   box-shadow: 15px 15px 50px rgba(0, 0, 0, 0.2);

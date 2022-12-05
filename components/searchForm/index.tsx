@@ -29,24 +29,10 @@ export function SearchLocation(props: any) {
     setLat(lat);
     setLon(lon);
 
-    const created = await createAReport(
-      localization,
-      description,
-      imgURL,
-      lat,
-      lon
-    );
+    const created = await createAReport(localization, description, imgURL, lat, lon);
 
     if (imgURL != "") {
-      props.onChange(
-        lat,
-        lon,
-        description,
-        imgURL,
-        localization,
-        created.UserId,
-        created.status
-      );
+      props.onChange(lat, lon, description, imgURL, localization, created.UserId, created.status);
     }
     return created;
   }
@@ -63,8 +49,7 @@ export function SearchLocation(props: any) {
       "state_changed",
       (snapshot) => {
         // progress function...
-        const currentProgress =
-          Math.round(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        const currentProgress = Math.round(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         setProgress(currentProgress);
       },
       (error) => {
@@ -104,29 +89,16 @@ export function SearchLocation(props: any) {
         </label>
         <label className={styles.image_label} htmlFor="image">
           Seleccionar imagen
-          <input
-            type="file"
-            id="image"
-            onChange={handleChange}
-            style={{ display: "none" }}
-          />
+          <input type="file" id="image" onChange={handleChange} style={{ display: "none" }} />
         </label>
         <div className={styles.bottom_content}>
           <div className={styles.progress_bar_container}>
-            <progress
-              className={styles.progress_bar}
-              value={progress}
-              max="100"
-            />
+            <progress className={styles.progress_bar} value={progress} max="100" />
             <p className={styles.progress_counter}>{progress + "%"}</p>
           </div>
 
           <div className={styles.load_img_btn__container}>
-            <button
-              className={styles.load_img_btn}
-              type="button"
-              onClick={handleUpload}
-            >
+            <button className={styles.load_img_btn} type="button" onClick={handleUpload}>
               Cargar imagen
             </button>
           </div>

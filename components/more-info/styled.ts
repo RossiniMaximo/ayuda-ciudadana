@@ -30,7 +30,7 @@ export const Container = styled.div`
 export const ContainerImages = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  height: 500px;
+  height: 100%;
   gap: 3vw;
   background-color: #042c89;
   padding: 10px;
@@ -41,9 +41,6 @@ export const ContainerImages = styled.div`
     margin-top: 50px;
     margin-left: 20px;
   }
-  @media (min-width: 600px) {
-    height: 400px;
-  }
 `;
 
 export const ContainerNextPage = styled.div`
@@ -51,10 +48,14 @@ export const ContainerNextPage = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 100px;
   gap: 50px;
 `;
 
 export const ContainerVideoText = styled.div`
   width: 90%;
+`;
+
+export const ContainerButton = styled.div`
+  margin-bottom: 20px;
 `;

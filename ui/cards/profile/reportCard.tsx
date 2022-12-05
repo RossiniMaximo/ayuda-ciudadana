@@ -8,10 +8,7 @@ export function ProfileReportsCard(props: UserReportsProps) {
   console.log(props);
 
   return (
-    <div
-      className={styles.main_container}
-      onClick={() => router.push("/map/" + props.id)}
-    >
+    <div className={styles.main_container} onClick={() => router.push("/map/" + props.id)}>
       <div className={styles.img_container}>
         <Image
           className={styles.img}

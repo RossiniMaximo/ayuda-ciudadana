@@ -5,11 +5,6 @@ export async function getAllReports() {
   return data;
 }
 
-export async function getReportById(reportId: number) {
-  const result = await fetchAPI(`/report/${reportId}`, { method: "GET" });
-  return result;
-}
-
 export async function deleteAReport(reportId: number) {
   const result = await fetchAPI("/report/" + reportId, { method: "DELETE" });
   return result;
@@ -40,5 +35,10 @@ export async function updateAReport(
     method: "PUT",
     body: { description, image: img, status },
   });
+  return result;
+}
+
+export async function getReportById(reportId: number) {
+  const result = await fetchAPI(`/report/${reportId}`, { method: "GET" });
   return result;
 }

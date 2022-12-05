@@ -17,6 +17,7 @@
     "next": "13.0.3",
     "next-svgr": "^0.0.2",
     "react": "18.2.0",
+    "react-auth-code-input": "^3.2.1",
     "react-dom": "18.2.0",
     "react-loader-spinner": "^5.3.4",
     "recoil": "^0.7.6",
