@@ -24,6 +24,7 @@
   width: 300px;
   padding: 10px;
   border-radius: 6px;
+  z-index: 5;
 }
 @media (min-width: 600px) {
   .search_form__container {
@@ -36,7 +37,7 @@
   cursor: pointer;
 }
 
-.containerIconMap{
+.containerIconMap {
   position: relative;
   left: -30px;
   top: 10px;
@@ -44,6 +45,6 @@
   justify-content: end;
 }
 
-.buttonMapReport{
-  cursor:pointer;
+.buttonMapReport {
+  cursor: pointer;
 }
